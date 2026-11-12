@@ -130,6 +130,29 @@ header{position:sticky;top:0;z-index:20;background:rgba(0,0,0,.88);backdrop-filt
 .verdict{margin-top:18px;padding:14px 16px;border-radius:10px;border:1px solid var(--orange-soft);color:var(--orange-soft);font-size:15px}
 .caption{margin-top:14px;color:#7F7F7F;font-size:13px}
 
+/* Competitor sets and price parity */
+.feature-grid{display:grid;grid-template-columns:.9fr 1.1fr;gap:56px;align-items:center}
+.feature-grid .lead{max-width:52ch}
+.ladder{margin-top:20px}
+.ladder .rung{display:grid;grid-template-columns:150px 1fr 64px;gap:12px;align-items:center;padding:9px 0;font-size:15px}
+.ladder .rung i{display:block;height:14px;border-radius:999px;background:#2E2E2E;overflow:hidden}
+.ladder .rung i b{display:block;height:100%;border-radius:999px}
+.ladder .rung span:last-child{text-align:right;color:var(--muted);font-variant-numeric:tabular-nums}
+.chart-title{font:600 14px var(--body);color:#D6D6D6;margin:26px 0 6px}
+.scatter{width:100%;height:auto;display:block}
+.scatter .ax{stroke:#3A3A3A;stroke-width:1}
+.scatter text{font:500 12px var(--body);fill:#9A9A9A}
+.scatter .lbl{fill:#E6E6E6}
+.parity{display:grid;gap:12px;margin-top:22px}
+.prow{display:grid;grid-template-columns:1fr auto;gap:6px 16px;padding:14px 16px;border-radius:12px;background:#0A0A0A;border:1px solid #242424}
+.prow b{font-weight:600}
+.prow .amt{font:700 20px var(--display);text-align:right}
+.prow small{grid-column:1 / 3;color:var(--muted);font-size:13px}
+.prow.flag{border-color:var(--orange-soft)}
+.prow.flag .amt{color:var(--orange)}
+.evidence{list-style:none;margin:18px 0 0;padding:0;border-top:1px solid var(--line)}
+.evidence li{padding:10px 0 10px 26px;border-bottom:1px solid var(--line);position:relative;font-size:15px;color:#D6D6D6}
+.evidence li::before{content:"";position:absolute;left:4px;top:18px;width:8px;height:8px;border-radius:50%;background:var(--orange)}
 /* RM Manager */
 .rm-grid{display:grid;grid-template-columns:.7fr 1.3fr;gap:56px;align-items:center;margin-top:8px}
 .table-wrap{overflow-x:auto}
@@ -205,7 +228,7 @@ footer{border-top:1px solid #1E1E1E;padding:44px 0;color:#8E8E8E;font-size:14px}
   section{padding:84px 0}
   .nav ul,.nav>.btn{display:none}
   .menu{display:block}
-  .hero-grid,.gap-grid,.report,.rm-grid,.agents-grid,.about-grid,.apply-grid{grid-template-columns:1fr;gap:40px}
+  .hero-grid,.gap-grid,.report,.rm-grid,.agents-grid,.about-grid,.apply-grid,.feature-grid{grid-template-columns:1fr;gap:40px}
   .radar{max-width:520px;margin:0 auto}
   .steps{grid-template-columns:1fr}
   .crit{grid-template-columns:1fr}
@@ -223,6 +246,7 @@ footer{border-top:1px solid #1E1E1E;padding:44px 0;color:#8E8E8E;font-size:14px}
   .score strong{font-size:30px}
   .modules{grid-template-columns:1fr}
   .split,.row{grid-template-columns:1fr}
+  .ladder .rung{grid-template-columns:120px 1fr 52px;font-size:14px}
   .facts li,.rhythm div{grid-template-columns:1fr;gap:4px}
   form{padding:22px}
 }
@@ -497,6 +521,49 @@ footer{border-top:1px solid #1E1E1E;padding:44px 0;color:#8E8E8E;font-size:14px}
         <p class="verdict">Needs validation: confidence is below 70. The opportunity looks large, but more observation days are required.</p>
         <p class="caption">Illustrative values.</p>
       </div>
+    </div>
+  </div>
+</section>
+
+<section id="competitors" class="alt">
+  <div class="wrap feature-grid">
+    <div>
+      <h2>Real competitors, not one market average</h2>
+      <p class="lead">LOCETRIC groups every hotel in your region by product, quality and price level, so each hotel is compared only with the hotels it truly competes with. A luxury cave hotel is never benchmarked against a budget guest house. Our rule engine calculates every number; AI groups hotels and explains its reasoning; you have the final say.</p>
+    </div>
+    <div class="card">
+      <div class="card-head"><h3>Segment price ladder</h3><small>Median nightly rate</small></div>
+      <div class="ladder" role="img" aria-label="Illustrative segment price ladder: luxury cave hotels 230, boutique cave hotels 160, mid-range hotels 100, guest houses 64 US dollars">
+        <div class="rung"><span>Luxury cave hotels</span><i><b style="width:92%;background:#FFD3B0"></b></i><span>$230</span></div>
+        <div class="rung"><span>Boutique cave hotels</span><i><b style="width:64%;background:#FF8F45"></b></i><span>$160</span></div>
+        <div class="rung"><span>Mid-range hotels</span><i><b style="width:40%;background:#C24A00"></b></i><span>$100</span></div>
+        <div class="rung"><span>Guest houses</span><i><b style="width:26%;background:#7A2E00"></b></i><span>$64</span></div>
+      </div>
+      <p class="chart-title">Rating and price, one dot per hotel</p>
+      <svg class="scatter" viewBox="0 0 520 280" role="img" aria-label="Illustrative chart: guest rating against price level for fictional hotels; Hotel Alpha is cheap for its rating, Hotel Bravo is expensive for its rating"><line class="ax" x1="44" y1="244" x2="506" y2="244"/><line class="ax" x1="44" y1="14" x2="44" y2="244"/><text x="86.0" y="262" text-anchor="middle">8.0</text><text x="191.0" y="262" text-anchor="middle">8.5</text><text x="296.0" y="262" text-anchor="middle">9.0</text><text x="401.0" y="262" text-anchor="middle">9.5</text><text x="506.0" y="262" text-anchor="middle">10.0</text><text x="275" y="278" text-anchor="middle">Guest rating (10-point, all review sites)</text><text x="12" y="129" transform="rotate(-90 12 129)" text-anchor="middle">Price level</text><circle cx="107.0" cy="225.2" r="6" fill="#7A2E00"/><circle cx="170.0" cy="221.0" r="6" fill="#7A2E00"/><circle cx="275.0" cy="216.8" r="6" fill="#7A2E00"/><circle cx="212.0" cy="211.6" r="6" fill="#7A2E00"/><circle cx="254.0" cy="189.6" r="6" fill="#C24A00"/><circle cx="317.0" cy="183.4" r="6" fill="#C24A00"/><circle cx="359.0" cy="177.1" r="6" fill="#C24A00"/><circle cx="296.0" cy="170.8" r="6" fill="#C24A00"/><circle cx="380.0" cy="185.5" r="6" fill="#C24A00"/><circle cx="338.0" cy="129.0" r="6" fill="#FF8F45"/><circle cx="401.0" cy="116.5" r="6" fill="#FF8F45"/><circle cx="422.0" cy="107.0" r="6" fill="#FF8F45"/><circle cx="380.0" cy="120.6" r="6" fill="#FF8F45"/><circle cx="443.0" cy="62.1" r="6" fill="#FFD3B0"/><circle cx="464.0" cy="39.1" r="6" fill="#FFD3B0"/><circle cx="422.0" cy="49.5" r="6" fill="#FFD3B0"/><circle cx="453.5" cy="202.2" r="8" fill="none" stroke="#FFFFFF" stroke-width="2"/><circle cx="453.5" cy="202.2" r="5" fill="#FF6A13"/><text class="lbl" x="439.5" y="206.2" text-anchor="end">Hotel Alpha: cheap for its rating</text><circle cx="128.0" cy="110.2" r="8" fill="none" stroke="#FFFFFF" stroke-width="2"/><circle cx="128.0" cy="110.2" r="5" fill="#FF6A13"/><text class="lbl" x="142.0" y="114.2" text-anchor="start">Hotel Bravo: expensive for its rating</text></svg>
+      <p class="caption">Illustrative values and fictional hotels.</p>
+    </div>
+  </div>
+</section>
+
+<section id="parity">
+  <div class="wrap feature-grid">
+    <div>
+      <h2>Price parity, made visible</h2>
+      <p class="lead">See when online travel agencies sell a hotel’s rooms below its own website, or when the hotel’s official site does not appear on Google at all. Every finding comes with the evidence you need for your first conversation with the hotel.</p>
+    </div>
+    <div class="card">
+      <div class="card-head"><h3>Hotel Charlie</h3><small>Saturday night, 2 adults</small></div>
+      <div class="parity">
+        <div class="prow"><b>Official website</b><span class="amt">$142</span><small>Standard room · observed 09:35</small></div>
+        <div class="prow"><b>Online travel agency</b><span class="amt">$121</span><small>Standard room · same observation · room types matched</small></div>
+        <div class="prow flag"><b>Official site is 17% above the agency</b><span class="amt">+$21</span><small>Seen on 9 of the last 12 observed nights</small></div>
+      </div>
+      <ul class="evidence">
+        <li>Hotel Delta: official site not shown on Google in 14 of 14 observations</li>
+        <li>Each price keeps its type, seller and the minute it was observed</li>
+      </ul>
+      <p class="caption">Illustrative values and fictional hotels.</p>
     </div>
   </div>
 </section>
