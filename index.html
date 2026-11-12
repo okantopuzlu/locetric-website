@@ -143,6 +143,10 @@ header{position:sticky;top:0;z-index:20;background:rgba(0,0,0,.88);backdrop-filt
 .scatter .ax{stroke:#3A3A3A;stroke-width:1}
 .scatter text{font:500 12px var(--body);fill:#9A9A9A}
 .scatter .lbl{fill:#E6E6E6}
+.chart-title.mob{display:none}
+.scatter-text{display:none;list-style:none;margin:8px 0 0;padding:0}
+.scatter-text li{padding:10px 0 10px 22px;border-bottom:1px solid var(--line);position:relative;font-size:15px;color:#D6D6D6}
+.scatter-text li::before{content:"";position:absolute;left:2px;top:17px;width:9px;height:9px;border-radius:50%;background:var(--orange)}
 .parity{display:grid;gap:12px;margin-top:22px}
 .prow{display:grid;grid-template-columns:1fr auto;gap:6px 16px;padding:14px 16px;border-radius:12px;background:#0A0A0A;border:1px solid #242424}
 .prow b{font-weight:600}
@@ -247,6 +251,8 @@ footer{border-top:1px solid #1E1E1E;padding:44px 0;color:#8E8E8E;font-size:14px}
   .modules{grid-template-columns:1fr}
   .split,.row{grid-template-columns:1fr}
   .ladder .rung{grid-template-columns:120px 1fr 52px;font-size:14px}
+  .scatter,.chart-title.desk{display:none}
+  .scatter-text,.chart-title.mob{display:block}
   .facts li,.rhythm div{grid-template-columns:1fr;gap:4px}
   form{padding:22px}
 }
@@ -539,8 +545,13 @@ footer{border-top:1px solid #1E1E1E;padding:44px 0;color:#8E8E8E;font-size:14px}
         <div class="rung"><span>Mid-range hotels</span><i><b style="width:40%;background:#C24A00"></b></i><span>$100</span></div>
         <div class="rung"><span>Guest houses</span><i><b style="width:26%;background:#7A2E00"></b></i><span>$64</span></div>
       </div>
-      <p class="chart-title">Rating and price, one dot per hotel</p>
+      <p class="chart-title desk">Rating and price, one dot per hotel</p>
+      <p class="chart-title mob">Price for its rating</p>
       <svg class="scatter" viewBox="0 0 520 280" role="img" aria-label="Illustrative chart: guest rating against price level for fictional hotels; Hotel Alpha is cheap for its rating, Hotel Bravo is expensive for its rating"><line class="ax" x1="44" y1="244" x2="506" y2="244"/><line class="ax" x1="44" y1="14" x2="44" y2="244"/><text x="86.0" y="262" text-anchor="middle">8.0</text><text x="191.0" y="262" text-anchor="middle">8.5</text><text x="296.0" y="262" text-anchor="middle">9.0</text><text x="401.0" y="262" text-anchor="middle">9.5</text><text x="506.0" y="262" text-anchor="middle">10.0</text><text x="275" y="278" text-anchor="middle">Guest rating (10-point, all review sites)</text><text x="12" y="129" transform="rotate(-90 12 129)" text-anchor="middle">Price level</text><circle cx="107.0" cy="225.2" r="6" fill="#7A2E00"/><circle cx="170.0" cy="221.0" r="6" fill="#7A2E00"/><circle cx="275.0" cy="216.8" r="6" fill="#7A2E00"/><circle cx="212.0" cy="211.6" r="6" fill="#7A2E00"/><circle cx="254.0" cy="189.6" r="6" fill="#C24A00"/><circle cx="317.0" cy="183.4" r="6" fill="#C24A00"/><circle cx="359.0" cy="177.1" r="6" fill="#C24A00"/><circle cx="296.0" cy="170.8" r="6" fill="#C24A00"/><circle cx="380.0" cy="185.5" r="6" fill="#C24A00"/><circle cx="338.0" cy="129.0" r="6" fill="#FF8F45"/><circle cx="401.0" cy="116.5" r="6" fill="#FF8F45"/><circle cx="422.0" cy="107.0" r="6" fill="#FF8F45"/><circle cx="380.0" cy="120.6" r="6" fill="#FF8F45"/><circle cx="443.0" cy="62.1" r="6" fill="#FFD3B0"/><circle cx="464.0" cy="39.1" r="6" fill="#FFD3B0"/><circle cx="422.0" cy="49.5" r="6" fill="#FFD3B0"/><circle cx="453.5" cy="202.2" r="8" fill="none" stroke="#FFFFFF" stroke-width="2"/><circle cx="453.5" cy="202.2" r="5" fill="#FF6A13"/><text class="lbl" x="439.5" y="206.2" text-anchor="end">Hotel Alpha: cheap for its rating</text><circle cx="128.0" cy="110.2" r="8" fill="none" stroke="#FFFFFF" stroke-width="2"/><circle cx="128.0" cy="110.2" r="5" fill="#FF6A13"/><text class="lbl" x="142.0" y="114.2" text-anchor="start">Hotel Bravo: expensive for its rating</text></svg>
+      <ul class="scatter-text">
+        <li><b>Hotel Alpha</b>: cheap for its rating</li>
+        <li><b>Hotel Bravo</b>: expensive for its rating</li>
+      </ul>
       <p class="caption">Illustrative values and fictional hotels.</p>
     </div>
   </div>
